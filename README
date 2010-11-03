@@ -1,0 +1,40 @@
+=======================
+ech - Embedded CouchDB
+=======================
+
+Getting Started
+===============
+
+Get the source for CouchDB and note its root directory, which is used as
+COUCH_HOME below.
+
+Get the ech source from github.
+
+At a console prompt:
+
+ $ cd ech
+ $ export COUCH_HOME=<dir>
+ $ make
+
+Running Tests
+=============
+
+ $ make TESTS=ech_tests test
+
+Using ech
+=========
+
+Refer to ECH_HOME/lib/ech/src/ech_tests.erl for examples.
+
+You can experiment with ech from an Erlang shell by running:
+
+ $ make shell
+
+Installing ech
+==============
+
+We're working on this. Until something better is available, you can simply
+include ETCH_HOME in the ERL_LIBS environment variable when running your
+application. E.g.
+
+ $ ERL_LIBS=<ech home dir> erl
