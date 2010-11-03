@@ -2,6 +2,37 @@
 ech - Embedded CouchDB
 =======================
 
+What and Why
+============
+
+ech is an Erlang library that provides a simple interface for using CouchDB
+as an embeddable database within your Erlang application.
+
+It is fundamentally different from Erlang clients that interface with
+CouchDB over HTTP.
+
+Here's how you'd use it:
+
+  1> {ok, Db} = ech:open("test").
+  2> Doc = ech_doc:new("chi", [{name, "Chicago"}, {type, "city"}]).
+  3> ech:put(Db, Doc).
+  4> {ok, Loaded} = ech:get(Db, "chi").
+  5> ech_doc:get_attrs(Loaded).
+  [{type,"city"},{name,"Chicago"}]
+
+You might want to work with an embedded database instead of a CouchDB over
+HTTP for these reasons:
+
+- You want a simple, scalable, performant data store that is part of your
+  application and doesn't have to be installed and managed separately
+
+- You want to build your own distributed database and want to leverage
+  CouchDB's outstanding b-tree indexing, lazy indexing, and replication
+  support
+
+- The idea of unnecessarily forcing Erlang through a JSON/HTTP layer offends
+  your sense of economy
+
 Getting Started
 ===============
 
